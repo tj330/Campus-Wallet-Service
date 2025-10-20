@@ -17,3 +17,8 @@ services:
       resources:
         limits:
           memory: 500m
+    networks:
+      - wallet-network
+networks:
+  wallet-network:
+    driver: bridge
