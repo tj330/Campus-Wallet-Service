@@ -2,6 +2,34 @@
 
 A Spring Boot 3 RESTful service for managing campus wallet transactions for students and stores.
 
+# How to run the app:
+Make sure to follow the steps without fail:
+
+In the project root, do the following steps:
+
+Start the database: 
+
+```sh:
+docker compose up -d
+```
+
+Build the docker image of the spring boot app: 
+
+```sh:
+docker build -t wallet-service
+```
+
+
+Now, run the command to start the app:
+
+```sh:
+docker run -p8080:8080 --network campus-wallet-service_wallet-network wallet-service
+```
+Now checkout all the routes from the url:
+```
+http://localhost:8080/swagger-ui/index.html#/
+```
+
 ## Features
 - Student, Store, Transaction entities (JPA)
 - CRUD APIs for students and stores
