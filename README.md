@@ -39,10 +39,6 @@ http://localhost:8080/swagger-ui/index.html/
 - Swagger/OpenAPI documentation
 - Role-based Spring Security (Admin vs Student)
 
-## Database Schema
-
-![Database Schema](images/schema.png)
-
 ## API Documentation
 
 ![API Docs 1](images/Api-doc1.png)
