@@ -19,7 +19,6 @@ Build the docker image of the spring boot app:
 docker build -t wallet-service
 ```
 
-
 Now, run the command to start the app:
 
 ```sh:
@@ -27,21 +26,31 @@ docker run -p8080:8080 --network campus-wallet-service_wallet-network wallet-ser
 ```
 Now checkout all the routes from the url:
 ```
-http://localhost:8080/swagger-ui/index.html#/
+http://localhost:8080/swagger-ui/index.html/
 ```
 
 ## Features
 - Student, Store, Transaction entities (JPA)
 - CRUD APIs for students and stores
 - Wallet operations: deposit, withdraw, pay, check balance, transaction history
-- MySQL database integration
+- PostgreSQL database integration
 - DTOs for request/response
 - Exception handling
 - Swagger/OpenAPI documentation
 - Role-based Spring Security (Admin vs Student)
 
+## Database Schema
+
+![Database Schema](images/schema.png)
+
+## API Documentation
+
+![API Docs 1](images/Api-doc1.png)
+
+![API Docs 2](images/Api-doc2.png)
+
 ## Getting Started
-1. Configure MySQL in `src/main/resources/application.properties`.
+1. Configure PostgreSQL in `src/main/resources/application.properties`.
 2. Build and run the project:
    ```sh
    mvn spring-boot:run
@@ -57,9 +66,11 @@ http://localhost:8080/swagger-ui/index.html#/
 - `/wallet/balance/{admissionNo}` - get balance
 - `/wallet/history/{admissionNo}` - get transaction history
 
+## Testing
+```sh:
+    mvn test 
+```
 ## Security
 - Admin: access to all endpoints
 - Student: access to wallet endpoints
 
-## License
-MIT
