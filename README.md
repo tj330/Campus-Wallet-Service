@@ -178,9 +178,6 @@ The service uses three main domain entities:
 - `Store`: campus store identified by store ID, with name and category
 - `Transaction`: wallet activity record linked to a student and optionally a store
 
-Database schema:
-
-![Database Schema](images/schema.png)
 
 ## API Documentation
 
