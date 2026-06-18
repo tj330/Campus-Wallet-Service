@@ -75,6 +75,19 @@ class WalletServiceImplTest {
     }
 
     @Test
+    void deposit_shouldThrowWhenAmountIsInvalid() {
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.deposit("ST001", 0.0));
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.deposit("ST001", -10.0));
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.deposit("ST001", Double.NaN));
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.deposit("ST001", Double.POSITIVE_INFINITY));
+        verifyNoInteractions(studentRepository, transactionRepository);
+    }
+
+    @Test
     void withdraw_shouldDecreaseBalance() {
         when(studentRepository.findById("ST001")).thenReturn(Optional.of(student));
         when(studentRepository.save(any(Student.class))).thenReturn(student);
@@ -100,6 +113,13 @@ class WalletServiceImplTest {
 
         assertThrows(StudentNotFoundException.class, () -> 
             walletService.withdraw("INVALID", 100.0));
+    }
+
+    @Test
+    void withdraw_shouldThrowWhenAmountIsInvalid() {
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.withdraw("ST001", 0.0));
+        verifyNoInteractions(studentRepository, transactionRepository);
     }
 
     @Test
@@ -133,6 +153,13 @@ class WalletServiceImplTest {
 
         assertThrows(StoreNotFoundException.class, () -> 
             walletService.pay("ST001", 999, 100.0));
+    }
+
+    @Test
+    void pay_shouldThrowWhenAmountIsInvalid() {
+        assertThrows(IllegalArgumentException.class, () ->
+            walletService.pay("ST001", 1, 0.0));
+        verifyNoInteractions(studentRepository, storeRepository, transactionRepository);
     }
 
     @Test

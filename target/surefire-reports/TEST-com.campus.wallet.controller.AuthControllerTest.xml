@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campus.wallet.controller.StudentControllerTest" time="0.784" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.campus.wallet.controller.AuthControllerTest" time="4.293" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -60,9 +60,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="get_shouldReturn404WhenNotFound" classname="com.campus.wallet.controller.StudentControllerTest" time="0.024">
-    <system-out><![CDATA[2026-06-18T22:45:40.521+05:30  INFO 119407 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.campus.wallet.controller.StudentControllerTest]: StudentControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-06-18T22:45:40.529+05:30  INFO 119407 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.campus.wallet.CampusWalletServiceApplication for test class com.campus.wallet.controller.StudentControllerTest
+  <testcase name="login_shouldReturn401ForInvalidCredentials" classname="com.campus.wallet.controller.AuthControllerTest" time="0.701">
+    <system-out><![CDATA[22:45:35.373 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.campus.wallet.controller.AuthControllerTest]: AuthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:45:35.544 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.campus.wallet.CampusWalletServiceApplication for test class com.campus.wallet.controller.AuthControllerTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -72,20 +72,14 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.5)
 
-2026-06-18T22:45:40.567+05:30  INFO 119407 --- [           main] c.c.w.controller.StudentControllerTest   : Starting StudentControllerTest using Java 21.0.11 with PID 119407 (started by tj330 in /home/tj330/Projects/Campus-Wallet-Service)
-2026-06-18T22:45:40.567+05:30  INFO 119407 --- [           main] c.c.w.controller.StudentControllerTest   : No active profile set, falling back to 1 default profile: "default"
-2026-06-18T22:45:41.125+05:30  INFO 119407 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a8ead9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@281ca256, org.springframework.security.web.context.SecurityContextHolderFilter@671f545b, org.springframework.security.web.header.HeaderWriterFilter@74a03bd5, org.springframework.web.filter.CorsFilter@26feccf7, org.springframework.security.web.authentication.logout.LogoutFilter@1e66bf2d, com.campus.wallet.security.JwtAuthenticationFilter@2d3eb1ea, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@c335b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@75c8d8e7, org.springframework.security.web.session.SessionManagementFilter@87fc0fc, org.springframework.security.web.access.ExceptionTranslationFilter@2cc97e47, org.springframework.security.web.access.intercept.AuthorizationFilter@342dc040]
-2026-06-18T22:45:41.173+05:30  INFO 119407 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2026-06-18T22:45:41.173+05:30  INFO 119407 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2026-06-18T22:45:41.174+05:30  INFO 119407 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2026-06-18T22:45:41.182+05:30  INFO 119407 --- [           main] c.c.w.controller.StudentControllerTest   : Started StudentControllerTest in 0.648 seconds (process running for 8.449)
+2026-06-18T22:45:36.099+05:30  INFO 119407 --- [           main] c.c.w.controller.AuthControllerTest      : Starting AuthControllerTest using Java 21.0.11 with PID 119407 (started by tj330 in /home/tj330/Projects/Campus-Wallet-Service)
+2026-06-18T22:45:36.103+05:30  INFO 119407 --- [           main] c.c.w.controller.AuthControllerTest      : No active profile set, falling back to 1 default profile: "default"
+2026-06-18T22:45:38.147+05:30  INFO 119407 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2c9cafa5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6c6379c, org.springframework.security.web.context.SecurityContextHolderFilter@6e73974, org.springframework.security.web.header.HeaderWriterFilter@1d1c37d5, org.springframework.web.filter.CorsFilter@7df4709e, org.springframework.security.web.authentication.logout.LogoutFilter@a2df0d5, com.campus.wallet.security.JwtAuthenticationFilter@4b98225c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44eb2452, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@31940704, org.springframework.security.web.session.SessionManagementFilter@2b6262bc, org.springframework.security.web.access.ExceptionTranslationFilter@4be12f6c, org.springframework.security.web.access.intercept.AuthorizationFilter@785a4557]
+2026-06-18T22:45:38.401+05:30  INFO 119407 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-06-18T22:45:38.401+05:30  INFO 119407 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-06-18T22:45:38.403+05:30  INFO 119407 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-06-18T22:45:38.449+05:30  INFO 119407 --- [           main] c.c.w.controller.AuthControllerTest      : Started AuthControllerTest in 2.816 seconds (process running for 5.715)
 ]]></system-out>
   </testcase>
-  <testcase name="delete_shouldReturn204" classname="com.campus.wallet.controller.StudentControllerTest" time="0.014"/>
-  <testcase name="update_shouldReturnUpdatedStudent" classname="com.campus.wallet.controller.StudentControllerTest" time="0.016"/>
-  <testcase name="getAll_shouldReturnListOfStudents" classname="com.campus.wallet.controller.StudentControllerTest" time="0.01"/>
-  <testcase name="create_shouldReturnCreatedStudent" classname="com.campus.wallet.controller.StudentControllerTest" time="0.009"/>
-  <testcase name="get_shouldReturnStudent" classname="com.campus.wallet.controller.StudentControllerTest" time="0.008"/>
-  <testcase name="getAll_shouldAcceptAdminBearerToken" classname="com.campus.wallet.controller.StudentControllerTest" time="0.014"/>
-  <testcase name="getAll_shouldReturn401WhenNotAuthenticated" classname="com.campus.wallet.controller.StudentControllerTest" time="0.005"/>
+  <testcase name="login_shouldReturnJwtForValidCredentials" classname="com.campus.wallet.controller.AuthControllerTest" time="0.29"/>
 </testsuite>

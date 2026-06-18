@@ -2,12 +2,15 @@ package com.campus.wallet.controller;
 
 import com.campus.wallet.entity.Student;
 import com.campus.wallet.repository.StudentRepository;
+import com.campus.wallet.security.JwtService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -29,6 +32,9 @@ class StudentControllerTest {
 
     @MockBean
     private StudentRepository studentRepository;
+
+    @Autowired
+    private JwtService jwtService;
 
     @Test
     @WithMockUser(roles = "ADMIN")
@@ -144,5 +150,26 @@ class StudentControllerTest {
     void getAll_shouldReturn401WhenNotAuthenticated() throws Exception {
         mockMvc.perform(get("/students"))
                 .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void getAll_shouldAcceptAdminBearerToken() throws Exception {
+        Student student = Student.builder()
+                .admissionNo("ST001")
+                .name("Rahul")
+                .department("CS")
+                .email("rahul@campus.edu")
+                .balance(1000.0)
+                .build();
+        when(studentRepository.findAll()).thenReturn(List.of(student));
+        String token = jwtService.generateToken(new UsernamePasswordAuthenticationToken(
+                "admin",
+                null,
+                List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))));
+
+        mockMvc.perform(get("/students")
+                .header("Authorization", "Bearer " + token))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].admissionNo").value("ST001"));
     }
 }

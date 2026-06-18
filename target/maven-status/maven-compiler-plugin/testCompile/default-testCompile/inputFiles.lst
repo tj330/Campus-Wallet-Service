@@ -1,3 +1,4 @@
 /home/tj330/Projects/Campus-Wallet-Service/src/test/java/com/campus/wallet/service/WalletServiceImplTest.java
+/home/tj330/Projects/Campus-Wallet-Service/src/test/java/com/campus/wallet/controller/AuthControllerTest.java
 /home/tj330/Projects/Campus-Wallet-Service/src/test/java/com/campus/wallet/controller/StudentControllerTest.java
 /home/tj330/Projects/Campus-Wallet-Service/src/test/java/com/campus/wallet/controller/WalletControllerTest.java

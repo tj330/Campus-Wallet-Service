@@ -27,6 +27,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Transactional
     public void deposit(String admissionNo, Double amount) {
+        validateAmount(amount);
         Student student = studentRepository.findById(admissionNo)
                 .orElseThrow(() -> new StudentNotFoundException(admissionNo));
         student.setBalance(student.getBalance() + amount);
@@ -42,6 +43,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Transactional
     public void withdraw(String admissionNo, Double amount) {
+        validateAmount(amount);
         Student student = studentRepository.findById(admissionNo)
                 .orElseThrow(() -> new StudentNotFoundException(admissionNo));
         if (student.getBalance() < amount) {
@@ -60,6 +62,7 @@ public class WalletServiceImpl implements WalletService {
 
     @Transactional
     public void pay(String admissionNo, Integer storeId, Double amount) {
+        validateAmount(amount);
         Student student = studentRepository.findById(admissionNo)
                 .orElseThrow(() -> new StudentNotFoundException(admissionNo));
         Store store = storeRepository.findById(storeId)
@@ -95,5 +98,11 @@ public class WalletServiceImpl implements WalletService {
                 .amount(txn.getAmount())
                 .txnTime(txn.getTxnTime())
                 .build()).collect(Collectors.toList());
+    }
+
+    private void validateAmount(Double amount) {
+        if (amount == null || amount <= 0 || amount.isNaN() || amount.isInfinite()) {
+            throw new IllegalArgumentException("Amount must be a positive finite value");
+        }
     }
 }
